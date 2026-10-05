@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADIL BEAUTY SHOP | Cosmetics Catalogue</title>
+<style>
+:root{--pink:#c2185b;--gold:#c99a2e;--cream:#fffaf7;--dark:#241b20}
+*{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--cream);color:var(--dark)}
+header{background:linear-gradient(135deg,#fff,#fbe8f0);padding:24px 18px 18px;text-align:center;border-bottom:1px solid #ead2dc}
+.logo{font-size:29px;font-weight:800;letter-spacing:1.5px;color:var(--pink)} .tag{margin:7px 0 0;color:#76636a}
+.hero{padding:28px 18px;text-align:center;background:#fff}.hero h1{margin:0 0 10px;font-size:30px}.hero p{margin:0;color:#6f6267}
+.note{margin:18px auto;max-width:850px;background:#fff3f7;border:1px solid #f0cbd9;padding:13px 15px;border-radius:12px;text-align:center;color:#7d294d;font-weight:600}
+.controls{max-width:1050px;margin:18px auto 5px;padding:0 16px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+button{border:1px solid #e2c4d0;background:#fff;border-radius:22px;padding:9px 15px;cursor:pointer;color:#6b2c46}
+button.active,button:hover{background:var(--pink);color:#fff}
+.grid{max-width:1050px;margin:18px auto 40px;padding:0 16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px}
+.card{background:#fff;border-radius:17px;overflow:hidden;box-shadow:0 5px 20px #3d1d2a12;border:1px solid #f0e1e6}
+.pic{height:185px;background:linear-gradient(135deg,#f8dce7,#fff);display:flex;align-items:center;justify-content:center;font-size:62px}
+.info{padding:14px}.cat{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--pink);font-weight:bold}.name{font-weight:700;margin:6px 0}.price{font-size:19px;font-weight:800;color:#9b173f}
+footer{background:#261b20;color:#fff;text-align:center;padding:28px 18px}.footer-title{font-size:21px;font-weight:800}.address{line-height:1.6;color:#e9dfe3;margin:10px 0 18px}.contact{display:inline-block;color:#fff;border:1px solid #c99a2e;padding:10px 17px;border-radius:24px;text-decoration:none}
+.small{font-size:12px;color:#bcaeb3;margin-top:18px}
+@media(max-width:480px){.logo{font-size:24px}.hero h1{font-size:25px}.pic{height:165px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">ADIL BEAUTY SHOP</div>
+  <div class="tag">Premium Cosmetics • Beauty • Care</div>
+</header>
+
+<section class="hero">
+  <h1>Our Product Catalogue</h1>
+  <p>Products, latest prices aur details dekhiye.</p>
+  <div class="note">🛍️ Products kharidne ke liye hamare shop par visit karein. Online order available nahi hai.</div>
+</section>
+
+<div class="controls">
+  <button class="active" onclick="filterProducts('all',this)">All</button>
+  <button onclick="filterProducts('makeup',this)">Makeup</button>
+  <button onclick="filterProducts('skincare',this)">Skin Care</button>
+  <button onclick="filterProducts('perfume',this)">Perfume</button>
+  <button onclick="filterProducts('haircare',this)">Hair Care</button>
+</div>
+
+<main class="grid" id="products">
+  <article class="card" data-cat="makeup"><div class="pic">💄</div><div class="info"><div class="cat">Makeup</div><div class="name">Matte Lipstick</div><div class="price">₹299</div></div></article>
+  <article class="card" data-cat="makeup"><div class="pic">✨</div><div class="info"><div class="cat">Makeup</div><div class="name">Compact Powder</div><div class="price">₹349</div></div></article>
+  <article class="card" data-cat="skincare"><div class="pic">🧴</div><div class="info"><div class="cat">Skin Care</div><div class="name">Face Wash</div><div class="price">₹199</div></div></article>
+  <article class="card" data-cat="skincare"><div class="pic">🌸</div><div class="info"><div class="cat">Skin Care</div><div class="name">Face Serum</div><div class="price">₹499</div></div></article>
+  <article class="card" data-cat="perfume"><div class="pic">🌹</div><div class="info"><div class="cat">Perfume</div><div class="name">Premium Perfume</div><div class="price">₹699</div></div></article>
+  <article class="card" data-cat="haircare"><div class="pic">🫧</div><div class="info"><div class="cat">Hair Care</div><div class="name">Shampoo</div><div class="price">₹249</div></div></article>
+</main>
+
+<footer>
+  <div class="footer-title">Visit ADIL BEAUTY SHOP</div>
+  <div class="address">Borha (Near High School Road),<br>Polsa, Radipur, Maheshpur</div>
+  <a class="contact" href="tel:7004074728">📞 7004074728</a>
+  <div class="small">Prices shown are for catalogue display. Please confirm current price and availability at the shop.</div>
+</footer>
+
+<script>
+function filterProducts(cat,btn){
+  document.querySelectorAll('.controls button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.card').forEach(c=>{
+    c.style.display=(cat==='all'||c.dataset.cat===cat)?'block':'none';
+  });
+}
+</script>
+</body>
+</html>
